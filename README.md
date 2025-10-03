@@ -1,4 +1,4 @@
-# Programming exercise
+# Programming assignment
 
 ## Introduction
 Modern power grids are becoming increasingly smart: they juggle energy assets, trying to keep the energy supply flowing efficiently. At the core of such systems sits an energy manager, a piece of software that tells energy assets what to do (for example "produce 50 kW" or "stay idle"), constantly checks whether they are behaving correctly and decides how to mitigate losses if necessary. In practice, such systems have an optimized power schedule for each asset, and they are responsible to ensure assets are running according this schedule.
@@ -14,7 +14,7 @@ The exercise is split into two parts. The first part is about creating a simple 
 
 ## Before you start
 
-The task has been prepared so that you don't need to use third party services, such as databases or real asset controller interfaces, just Python. Instead, you are given a `DeviceController` and a `ScheduleProvider` class to work with. Please find them in the shared Python module and read their docstrings for additional information. You are not allowed to change the logic in this module.
+The task has been prepared so that you don't need to use third party services, such as databases or real asset controller interfaces, just Python. Instead, you are given a `DeviceController` and a `ScheduleProvider` class to work with. Please find them in the shared Python module. You might want to read through the code to get familiar how certain aspects of the system are simulated, such as errors and blocking operations. You are not allowed to change the logic in this module.
 
 ## Part 1
 
@@ -41,13 +41,30 @@ Adjust your code from part 1 by doing the following:
 - The frequency of reading statuses and setting power targets is the same as in Part 1. You shouldn't run these operations outside the timed executions. 
 
 Examples:
-```python
-targets: {'asset_1': 100, 'asset_2': 100, 'asset_3': 300}
-potentials: {'asset_1': 200, 'asset_2': 300, 'asset_3': 50}
-dispatched: {'asset_1': 200, 'asset_2': 250, 'asset_3': 50}
+```
+scheduled targets: {'asset_1': 100, 'asset_2': 100, 'asset_3': 300}
+potential outputs: {'asset_1': 200, 'asset_2': 300, 'asset_3': 50}
+targets set: {'asset_1': 200, 'asset_2': 250, 'asset_3': 50}
 ```
 
-```python
-targets: {'asset_1': 100, 'asset_2': 200, 'asset_3': 300}
-potentials: {'asset_1': 0, 'asset_2': None, 'asset_3': 500}
-dispatched: {'asset_1': 0, 'asset_2': 0, 'asset_3': 500}
+```
+scheduled targets: {'asset_1': 100, 'asset_2': 200, 'asset_3': 300}
+potential outputs: {'asset_1': 0, 'asset_2': None, 'asset_3': 500}
+targets set: {'asset_1': 0, 'asset_2': 0, 'asset_3': 500}
+```
+
+## Submission Guidelines
+
+- Use Python 3.11+ for your implementation.
+- You are encouraged to use any Python framework or library as long as they are publicly available and maintained.
+- Set up your project in a virtual environment (e.g., venv, poetry, or pipenv).
+- Include a requirements.txt (or equivalent such as pyproject.toml or Pipfile) so we can easily install dependencies.
+- Make sure your solution meets quality standards:
+  - Please follow clean code guidelines, write clear, consistent, and well-structured code that is readable and extensible.
+  - Please use the [PEP 8](https://peps.python.org/pep-0008/) code style guideline.
+  - Adding tests (e.g., with pytest or unittest) is encouraged but not mandatory. Even a few tests around critical logic (e.g., handling device errors, falling back when schedule is missing) would strengthen your submission.
+- Please provide your solution in a GitHub repository and invite [petervarga-sight-e](https://github.com/petervarga-sight-e) when ready. Please add a short README.md explaining how to install and run your application. We should be able to clone your repository, create a virtual environment, install dependencies, and run your program with minimal effort.
+
+We are not looking for a perfect solution, but rather for clear, maintainable code that demonstrates how you approach problems. Show us how you think about structure, error handling, and adaptability.
+
+Good luck — we look forward to reviewing your solution!
